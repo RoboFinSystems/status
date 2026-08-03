@@ -2,8 +2,8 @@
   {
     "name": "RoboSystems API",
     "url": "https://api.robosystems.ai/v1/status",
-    "icon": "https://icons.duckduckgo.com/ip3/api.robosystems.ai.ico",
-    "slug": "robo-systems-api",
+    "icon": "https://robosystems.ai/icon.png",
+    "slug": "robosystems-api",
     "status": "up",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
@@ -20,8 +20,8 @@
   {
     "name": "RoboSystems",
     "url": "https://robosystems.ai",
-    "icon": "https://icons.duckduckgo.com/ip3/robosystems.ai.ico",
-    "slug": "robo-systems",
+    "icon": "https://robosystems.ai/icon.png",
+    "slug": "robosystems",
     "status": "up",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
@@ -38,8 +38,8 @@
   {
     "name": "RoboLedger",
     "url": "https://roboledger.ai",
-    "icon": "https://icons.duckduckgo.com/ip3/roboledger.ai.ico",
-    "slug": "robo-ledger",
+    "icon": "https://roboledger.ai/icon.png",
+    "slug": "roboledger",
     "status": "up",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
@@ -56,8 +56,8 @@
   {
     "name": "RoboInvestor",
     "url": "https://roboinvestor.ai",
-    "icon": "https://icons.duckduckgo.com/ip3/roboinvestor.ai.ico",
-    "slug": "robo-investor",
+    "icon": "https://roboinvestor.ai/icon.png",
+    "slug": "roboinvestor",
     "status": "up",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",

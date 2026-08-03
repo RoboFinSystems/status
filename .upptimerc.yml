@@ -1,27 +1,42 @@
 owner: RoboFinSystems
 repo: status
 
+# `slug` is set explicitly on every site: without it Upptime slugifies the
+# display name and splits the camel-case brand ("RoboSystems API" would become
+# `robo-systems-api`). The slug is the public URL — /history/<slug> — plus the
+# path used for history/, graphs/ and api/ in this repo.
 sites:
   - name: RoboSystems API
+    slug: robosystems-api
     url: https://api.robosystems.ai/v1/status
+    icon: https://robosystems.ai/icon.png
     expectedStatusCodes: [200]
     maxResponseTime: 5000
   - name: RoboSystems
+    slug: robosystems
     url: https://robosystems.ai
+    icon: https://robosystems.ai/icon.png
     expectedStatusCodes: [200]
     maxResponseTime: 5000
   - name: RoboLedger
+    slug: roboledger
     url: https://roboledger.ai
+    icon: https://roboledger.ai/icon.png
     expectedStatusCodes: [200]
     maxResponseTime: 5000
   - name: RoboInvestor
+    slug: roboinvestor
     url: https://roboinvestor.ai
+    icon: https://roboinvestor.ai/icon.png
     expectedStatusCodes: [200]
     maxResponseTime: 5000
 
 status-website:
   cname: status.robosystems.ai
   name: RoboSystems Status
+  # `dark` is only a base layer — every custom property it sets is overridden
+  # by the `css` block below. It stays so that any token added upstream still
+  # has a dark fallback instead of falling through to the light theme.
   theme: dark
   logoUrl: https://raw.githubusercontent.com/RoboFinSystems/status/master/assets/robosystems.png
   favicon: https://raw.githubusercontent.com/RoboFinSystems/status/master/assets/favicon-192.png
@@ -34,12 +49,251 @@ status-website:
   navbar:
     - title: Status
       href: /
+    - title: Incidents
+      href: https://github.com/RoboFinSystems/status/issues
     - title: Changelog
       href: https://github.com/RoboFinSystems/robosystems/releases
-    - title: Documentation
+    - title: Docs
       href: https://github.com/RoboFinSystems/robosystems/wiki
-    - title: Support
-      href: mailto:hello@robosystems.ai
+    - title: RoboSystems.ai
+      href: https://robosystems.ai
+
+  links:
+    - rel: preconnect
+      href: https://fonts.gstatic.com
+    - rel: stylesheet
+      href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+
+  # Open Graph needs `property`, not `name`, so these go here rather than in
+  # the `metaTags` list (which only emits `name`/`content` pairs).
+  customHeadHtml: |
+    <meta name="description" content="Live availability and response times for the RoboSystems platform, RoboLedger, and RoboInvestor." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RoboSystems" />
+    <meta property="og:title" content="RoboSystems Platform Status" />
+    <meta property="og:description" content="Live availability and response times for the RoboSystems platform, RoboLedger, and RoboInvestor." />
+    <meta property="og:url" content="https://status.robosystems.ai" />
+    <meta property="og:image" content="https://robosystems.ai/images/og-preview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RoboSystems Platform Status" />
+    <meta name="twitter:description" content="Live availability and response times for the RoboSystems platform, RoboLedger, and RoboInvestor." />
+    <meta name="twitter:image" content="https://robosystems.ai/images/og-preview.png" />
+
+  # Injected last in <head>, after the theme and global.css, so plain rules win
+  # on the cascade. Only the Svelte-scoped component styles (which carry an
+  # unpredictable .svelte-<hash> class) need !important to override.
+  css: |
+    /* -------------------------------------------------------------------
+       RoboSystems brand theme. Values mirror the platform design system:
+       robosystems-app/tailwind.config.ts + robosystems-core/theme.
+       ------------------------------------------------------------------- */
+    :root {
+      /* Surfaces — black body, matching the apps' `dark:bg-black` */
+      --body-background-color: #000000;
+      --body-text-color: #e4e4e7;
+      --card-background-color: #0b0b0e;
+      --card-border-color: #27272a;
+      --nav-background-color: #000000;
+      --nav-border-bottom-color: #27272a;
+      --nav-current-border-bottom-color: #3b7af5;
+
+      /* Status colors — the shared `semantic` tokens (success / warning /
+         error), so "up" reads the same here as it does inside the apps. */
+      --up-border-left-color: #00d4aa;
+      --degraded-border-left-color: #ff6b35;
+      --down-border-left-color: #ef4444;
+      --down-background-color: #1a0a0a;
+
+      /* Black label text clears 5.5:1 against all three tag backgrounds. */
+      --tag-color: #000000;
+      --tag-up-background-color: #00d4aa;
+      --tag-degraded-background-color: #ff6b35;
+      --tag-down-background-color: #ef4444;
+
+      /* Flash highlight when the time range changes */
+      --change-background-color: #1d4ed8;
+
+      --code-color: #1affd1;
+      --code-background-color: rgba(0, 212, 170, 0.12);
+
+      --error-button-border-color: #1d4ed8;
+      --error-button-background-color: #2563eb;
+      --error-button-color: #ffffff;
+      --submit-button-border-color: #1d4ed8;
+      --submit-button-background-color: #2563eb;
+      --submit-button-color: #ffffff;
+
+      /* Response-time PNGs are generated at #1abc9c — the same hue as the
+         brand's #00d4aa success token, so they're left untouched. */
+      --graph-opacity: 1;
+      --graph-filter: none;
+    }
+
+    /* Type: Space Grotesk for body, Orbitron for display — as in the apps. */
+    body {
+      font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      /* Same 60px lattice as the robosystems.ai hero sections, dialed well
+         down so it reads as texture rather than as a grid. */
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 60px 60px;
+      background-position: center top;
+      background-attachment: fixed;
+    }
+
+    h1 {
+      font-family: "Orbitron", "Space Grotesk", ui-sans-serif, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    h2,
+    h4 {
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    h3 {
+      font-weight: 500;
+    }
+
+    .lead {
+      color: #a1a1aa;
+      max-width: 46rem;
+    }
+
+    /* Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    nav .logo div {
+      font-family: "Orbitron", "Space Grotesk", ui-sans-serif, sans-serif;
+      letter-spacing: 0.01em;
+    }
+    nav .logo img {
+      height: 2.25rem !important;
+    }
+    nav ul a {
+      padding: 1.25rem 1rem !important;
+      color: #a1a1aa;
+      transition: color 0.15s ease;
+    }
+    nav ul a:hover,
+    nav ul a[aria-current] {
+      color: #ffffff;
+    }
+
+    /* Service cards */
+    article {
+      border-radius: 0.5rem;
+      transition: border-color 0.15s ease;
+    }
+    article + article {
+      margin-top: 0.75rem;
+    }
+    article:hover {
+      border-color: #3f3f46;
+    }
+    article h4 {
+      margin-bottom: 0.25rem;
+    }
+    article .data {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* The response-time sparkline is painted as the card's background image at
+       full strength, which reads as a solid teal mass against black. Layer a
+       card-colored veil over it — opaque behind the text, fading right — so it
+       becomes a backdrop instead of the loudest thing on the page. */
+    article.graph {
+      background-image:
+        linear-gradient(
+          90deg,
+          #0b0b0e 32%,
+          rgba(11, 11, 14, 0.86) 58%,
+          rgba(11, 11, 14, 0.74) 100%
+        ),
+        var(--background) !important;
+      background-size: auto, contain !important;
+      background-position: center, center right !important;
+      background-repeat: no-repeat, no-repeat !important;
+    }
+
+    /* Time-range selector: pills instead of bare bold text */
+    form.r label {
+      margin-left: 0.5rem !important;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid #27272a;
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      color: #a1a1aa;
+      cursor: pointer;
+      transition: color 0.15s ease, border-color 0.15s ease,
+        background 0.15s ease;
+    }
+    form.r label:hover {
+      color: #ffffff;
+      border-color: #3f3f46;
+    }
+    form.r input:checked + label {
+      color: #ffffff;
+      background: #18181b;
+      border-color: #3b7af5;
+    }
+
+    /* Upstream pins the nav to a single `white-space: nowrap` row, which pushes
+       the whole document wider than a narrow viewport and clips the last link.
+       Wrap it instead, from just under the width where the logo plus five links
+       stop fitting. The !importants are unavoidable: the rules being overridden
+       are Svelte-scoped and carry higher specificity. */
+    @media (max-width: 900px) {
+      nav {
+        position: static;
+        white-space: normal !important;
+      }
+      nav .container {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+      }
+      nav .logo {
+        float: none !important;
+        margin-right: 0 !important;
+      }
+      nav ul {
+        flex-wrap: wrap !important;
+      }
+      nav ul a {
+        padding: 0.75rem !important;
+      }
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+
+    /* Footer */
+    footer {
+      opacity: 1 !important;
+      color: #71717a;
+      font-size: 0.875rem;
+    }
+    footer a {
+      color: #a1a1aa;
+    }
+    footer a:hover {
+      color: #ffffff;
+    }
+
+# Merged over the status page's built-in strings, so only the overrides listed
+# here need to be present.
+i18n:
+  footer: "[RoboSystems](https://robosystems.ai) · [Status source]($REPO) · Powered by [Upptime](https://upptime.js.org)"
+  allSystemsOperational: "All systems operational"
 
 assignees:
   - jfrench9
