@@ -23,6 +23,8 @@ status-website:
   cname: status.robosystems.ai
   name: RoboSystems Status
   theme: dark
+  logoUrl: https://raw.githubusercontent.com/RoboFinSystems/status/master/assets/robosystems.png
+  favicon: https://raw.githubusercontent.com/RoboFinSystems/status/master/assets/favicon-192.png
   introTitle: "RoboSystems Platform Status"
   introMessage: >-
     Live availability and response times for the RoboSystems platform and
