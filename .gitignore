@@ -1,0 +1,9 @@
+# Claude Code machine-local settings (a shared .claude/settings.json, if one is
+# ever added, stays tracked on purpose)
+.claude/settings.local.json
+
+# Scratch dir created by `upptime site` when the status page is built
+site/
+
+# macOS
+.DS_Store

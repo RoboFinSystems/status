@@ -46,17 +46,21 @@ status-website:
     applications. Checks run every five minutes from infrastructure independent
     of the services being monitored. Incidents are opened, updated, and resolved
     publicly.
+  # No "Incidents" link: Upptime renders active and past incidents on this page
+  # already (any issue labelled `status`), so a nav item would duplicate that —
+  # and it could only point at the repo's unfiltered issue list, which is not
+  # the same thing as an incident history.
   navbar:
+    - title: Home
+      href: https://robosystems.ai
     - title: Status
       href: /
-    - title: Incidents
-      href: https://github.com/RoboFinSystems/status/issues
     - title: Changelog
       href: https://github.com/RoboFinSystems/robosystems/releases
     - title: Docs
       href: https://github.com/RoboFinSystems/robosystems/wiki
-    - title: RoboSystems.ai
-      href: https://robosystems.ai
+    - title: GitHub
+      href: https://github.com/RoboFinSystems/robosystems
 
   links:
     - rel: preconnect
@@ -252,7 +256,7 @@ status-website:
        Wrap it instead, from just under the width where the logo plus five links
        stop fitting. The !importants are unavoidable: the rules being overridden
        are Svelte-scoped and carry higher specificity. */
-    @media (max-width: 900px) {
+    @media (max-width: 760px) {
       nav {
         position: static;
         white-space: normal !important;
@@ -261,9 +265,11 @@ status-website:
         flex-wrap: wrap !important;
         justify-content: center !important;
       }
+      /* `float` has to go for the flex wrap to behave, but keep the gap after
+         the wordmark — zeroing it lets the row re-fit in a cramped single line
+         instead of wrapping, which is the thing this block exists to avoid. */
       nav .logo {
         float: none !important;
-        margin-right: 0 !important;
       }
       nav ul {
         flex-wrap: wrap !important;
