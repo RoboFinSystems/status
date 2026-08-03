@@ -1,31 +1,43 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+owner: RoboFinSystems
+repo: status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: RoboSystems API
+    url: https://api.robosystems.ai/v1/status
+    expectedStatusCodes: [200]
+    maxResponseTime: 5000
+  - name: RoboSystems
+    url: https://robosystems.ai
+    expectedStatusCodes: [200]
+    maxResponseTime: 5000
+  - name: RoboLedger
+    url: https://roboledger.ai
+    expectedStatusCodes: [200]
+    maxResponseTime: 5000
+  - name: RoboInvestor
+    url: https://roboinvestor.ai
+    expectedStatusCodes: [200]
+    maxResponseTime: 5000
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  cname: status.robosystems.ai
+  name: RoboSystems Status
+  theme: dark
+  introTitle: "RoboSystems Platform Status"
+  introMessage: >-
+    Live availability and response times for the RoboSystems platform and
+    applications. Checks run every five minutes from infrastructure independent
+    of the services being monitored. Incidents are opened, updated, and resolved
+    publicly.
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
+    - title: Changelog
+      href: https://github.com/RoboFinSystems/robosystems/releases
+    - title: Documentation
+      href: https://github.com/RoboFinSystems/robosystems/wiki
+    - title: Support
+      href: mailto:hello@robosystems.ai
 
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+assignees:
+  - jfrench9
