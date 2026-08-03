@@ -14,19 +14,19 @@
 # * More by Anand Chowdhary: https://anandchowdhary.com
 
 
-name: Summary CI
+name: Updates CI
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 3 * * *"
   repository_dispatch:
-    types: [summary]
+    types: [updates]
   workflow_dispatch:
 concurrency:
   group: ${{ github.repository }}-${{ github.head_ref || github.ref_name }}-upptime
   cancel-in-progress: false
 jobs:
   release:
-    name: Generate README
+    name: Deploy updates
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,9 +34,7 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
           token: ${{ secrets.GH_PAT || github.token }}
-      - name: Update summary in README
-        uses: upptime/uptime-monitor@v1.43.13
-        with:
-          command: "readme"
+      - name: Update code
+        uses: upptime/updates@master
         env:
           GH_PAT: ${{ secrets.GH_PAT || github.token }}
