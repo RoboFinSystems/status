@@ -13,7 +13,7 @@
     "time": 230,
     "timeDay": 137,
     "timeWeek": 218,
-    "timeMonth": 234,
+    "timeMonth": 236,
     "timeYear": 230,
     "dailyMinutesDown": {}
   },
@@ -31,7 +31,7 @@
     "time": 284,
     "timeDay": 214,
     "timeWeek": 258,
-    "timeMonth": 289,
+    "timeMonth": 296,
     "timeYear": 284,
     "dailyMinutesDown": {}
   },
@@ -49,7 +49,7 @@
     "time": 266,
     "timeDay": 179,
     "timeWeek": 245,
-    "timeMonth": 280,
+    "timeMonth": 282,
     "timeYear": 266,
     "dailyMinutesDown": {}
   },
@@ -58,17 +58,17 @@
     "url": "https://roboinvestor.ai",
     "icon": "https://roboinvestor.ai/icon.png",
     "slug": "roboinvestor",
-    "status": "up",
+    "status": "down",
     "uptime": "100.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 374,
-    "timeDay": 297,
-    "timeWeek": 305,
-    "timeMonth": 278,
-    "timeYear": 374,
+    "time": 417,
+    "timeDay": 1346,
+    "timeWeek": 566,
+    "timeMonth": 351,
+    "timeYear": 417,
     "dailyMinutesDown": {}
   }
 ]
