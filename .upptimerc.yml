@@ -43,9 +43,9 @@ status-website:
   introTitle: "RoboSystems Platform Status"
   introMessage: >-
     Live availability and response times for the RoboSystems platform and
-    applications. Checks run every five minutes from infrastructure independent
-    of the services being monitored. Incidents are opened, updated, and resolved
-    publicly.
+    applications. Checks run automatically throughout the day from infrastructure
+    independent of the services being monitored. Incidents are opened, updated,
+    and resolved publicly.
   # No "Incidents" link: Upptime renders active and past incidents on this page
   # already (any issue labelled `status`), so a nav item would duplicate that —
   # and it could only point at the repo's unfiltered issue list, which is not
