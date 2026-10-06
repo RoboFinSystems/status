@@ -58,21 +58,21 @@
     "url": "https://roboinvestor.ai",
     "icon": "https://roboinvestor.ai/icon.png",
     "slug": "roboinvestor",
-    "status": "down",
-    "uptime": "99.80%",
-    "uptimeDay": "92.25%",
-    "uptimeWeek": "98.89%",
-    "uptimeMonth": "99.59%",
-    "uptimeYear": "99.80%",
-    "time": 410,
-    "timeDay": 1209,
-    "timeWeek": 462,
-    "timeMonth": 420,
-    "timeYear": 410,
+    "status": "up",
+    "uptime": "99.46%",
+    "uptimeDay": "70.25%",
+    "uptimeWeek": "95.75%",
+    "uptimeMonth": "98.87%",
+    "uptimeYear": "99.46%",
+    "time": 411,
+    "timeDay": 963,
+    "timeWeek": 463,
+    "timeMonth": 421,
+    "timeYear": 411,
     "dailyMinutesDown": {
       "2026-09-17": 56,
       "2026-09-16": 13,
-      "2026-10-06": 112
+      "2026-10-06": 428
     }
   }
 ]
