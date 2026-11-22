@@ -58,7 +58,7 @@ status-website:
     - title: Changelog
       href: https://github.com/RoboFinSystems/robosystems/releases
     - title: Docs
-      href: https://github.com/RoboFinSystems/robosystems/wiki
+      href: https://robosystems.ai/docs
     - title: GitHub
       href: https://github.com/RoboFinSystems/robosystems
 

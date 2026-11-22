@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
-  - name: Feature requests and ideas
-    url: https://github.com/orgs/upptime/discussions/new?category=ideas
-    about: Suggest an idea for this project
-  - name: Questions
-    url: https://github.com/orgs/upptime/discussions/new?category=q-a
-    about: Please ask and answer questions here
+  - name: Platform bugs and feature requests
+    url: https://github.com/RoboFinSystems/robosystems/issues
+    about: Report a problem with the RoboSystems platform or suggest an idea
+  - name: Documentation
+    url: https://robosystems.ai/docs
+    about: Guides, the API reference and technical docs
